@@ -5,17 +5,14 @@ import { View, Text } from 'react-native';
 import { createStaticNavigation } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-function HomeScreen() {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Home Screen</Text>
-    </View>
-  );
-}
+import Home from './telas/Home';
+import ListarClientes from './telas/ListarClientes';
+
 
 const RootStack = createNativeStackNavigator({
   screens: {
-    Home: HomeScreen,
+    Home:Home,
+    ListarClientes:ListarClientes
   },
 });
 
