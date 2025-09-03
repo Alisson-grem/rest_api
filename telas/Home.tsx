@@ -1,9 +1,19 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 export default function Home() {
     return (
         <View style={styles.container}>
-            <Text>Teste Home</Text>
+            <Text style={styles.titulo}>Teste Home</Text>
+
+            <View style={styles.bloco}>
+                <TouchableOpacity style={styles.btn}>
+                    <Text style={styles.txtBtn}>Clientes</Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity style={styles.btn}>
+                    <Text style={styles.txtBtn}>Usuários</Text>
+                </TouchableOpacity>
+            </View>
         </View>
     );
 }
@@ -15,4 +25,23 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center'
     },
+    titulo: {
+        fontSize: 20,
+        fontWeight: 'bold',
+    },
+    bloco: {
+        width: '100%'
+    },
+    btn: {
+        backgroundColor: '#c11b1b',
+        marginLeft: '10%',
+        marginRight: '10%',
+        marginTop:20,
+        padding:20,
+        borderRadius:20
+    },
+    txtBtn: {
+        textAlign:'center',
+        fontSize:20
+    }
 });
