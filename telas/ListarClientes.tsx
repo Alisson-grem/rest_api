@@ -3,9 +3,10 @@ import { View, FlatList, Text, StyleSheet, TouchableOpacity } from 'react-native
 export default function ListarClientes() {
  return (
     <>
-        <View>
+        <View style={styles.bloco}>
             <TouchableOpacity>
                 <Text>Cadastrar Novo Cliente</Text>
+                
             </TouchableOpacity>
         </View>
 
