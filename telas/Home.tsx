@@ -6,7 +6,7 @@ export default function Home() {
     const navigation = useNavigation();
     return (
         <View style={styles.container}>
-            <Text style={styles.titulo}>Gerenciamento de Eventos</Text>
+            <Text style={styles.titulo}>Gerenciamento de Festa</Text>
 
             <View style={styles.bloco}>
                 <TouchableOpacity style={styles.btn}
