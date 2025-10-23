@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
 
-import {useNavigation,} from '@react-navigation/native';
+import {useNavigation, useRoute} from '@react-navigation/native';
 
 import api from '../components/Api';
 
