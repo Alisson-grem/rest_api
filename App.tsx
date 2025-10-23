@@ -6,16 +6,23 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import Home from './telas/Home';
 import ListarClientes from './telas/ListarClientes';
+import ListarUsuarios from './telas/ListarUsuarios';
 import TelaCad from './telas/TelaCad';
+import TelaCadUsuario from './telas/TelaCadUsuario';
 import TelaEditar from './telas/TelaEditar';
+import TelaEditarUsuario from './telas/TelaEditarUsuario';
 
 
 const RootStack = createNativeStackNavigator({
   screens: {
     Home:Home,
     ListarClientes:ListarClientes,
+    ListarUsuarios:ListarUsuarios,
     TelaCad:TelaCad,
-    TelaEditar:TelaEditar
+    TelaCadUsuario:TelaCadUsuario,
+    TelaEditar:TelaEditar,
+    TelaEditarUsuario:TelaEditarUsuario
+    
   },
 });
 
