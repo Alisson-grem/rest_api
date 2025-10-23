@@ -1,64 +1,64 @@
 import { useState, useEffect } from 'react';
 import { View, FlatList, Text, StyleSheet, TouchableOpacity, Alert } from 'react-native';
 
-import Cliente from '../components/Cliente';
+import Usuario from '../components/Usuario';
 
 import api from '../components/Api';
 
 import {useNavigation,} from '@react-navigation/native';
 
-type ClienteType = { id: number; nome: string; cpf: string; saldo: number };
+type UsuarioType = { id: number; nome: string; login: string; };
 
-export default function ListarClientes() {
+export default function ListarUsuarios() {
 
     const navigation = useNavigation();
 
-    const [clientes, setCliente] = useState<ClienteType[]>([]);
+    const [usuarios, setUsuario] = useState<UsuarioType[]>([]);
 
-    async function buscaClientes(){
-        const response = await api.get('clientes');
-        setCliente(response.data);
+    async function buscaUsuarios(){
+        const response = await api.get('usuarios');
+        setUsuario(response.data);
     }
 
     useEffect(
         ()=>{
-            buscaClientes();
+            buscaUsuarios();
         },[]
     );
 
     async function excluir(id: number) {
             try {
-               const r = await api.delete(`clientes/${id}`);
+               const r = await api.delete(`usuarios/${id}`);
 
                 Alert.alert(
                 "Excluir",`${JSON.stringify(r.data)}`
                 );
 
-                await buscaClientes();
+                await buscaUsuarios();
             } catch (e: any) {
                 Alert.alert("Erro ao excluir", e?.message ?? "Erro desconhecido");
             }
     }
 
-    function editar(){
-        navigation.navigate('TelaEditar' as never, {cliente : item} as never);
+    function editar(item: UsuarioType){
+      navigation.navigate('TelaEditarUsuario' as never, {usuario : item} as never);
     }
  return (
     <>
         <View style={styles.bloco}>
             <TouchableOpacity style={styles.btn} onPress={()=> navigation.navigate('TelaCad' as never)}>
-                <Text style={styles.txtBtn}>Cadastrar Novo Cliente</Text>
+                <Text style={styles.txtBtn}>Cadastrar Novo Usuario</Text>
             </TouchableOpacity>
         </View>
 
         <View style={styles.bloco}>
-            <Text style={styles.titulo}> Lista de Clientes </Text>
+            <Text style={styles.titulo}> Lista de Usuarios </Text>
 
             <FlatList 
-                data={clientes}
+                data={usuarios}
                 keyExtractor={(item)=> String(item.id)}
-                renderItem={({item})=><Cliente nome={item.nome} cpf={item.cpf} saldo={item.saldo} 
-                id={item.id} onExcluir={()=>excluir(item.id)} onEditar={editar}/>}
+                renderItem={({item})=><Usuario nome={item.nome} login={item.login} 
+                id={item.id} onExcluir={()=>excluir(item.id)} onEditar={()=>editar(item)}/>}
                 style={styles.lista}
             />
 
